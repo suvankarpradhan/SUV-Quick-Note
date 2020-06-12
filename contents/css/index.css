@@ -1,0 +1,22 @@
+.header{
+    margin-top: 25px;
+    font-family: Candara;
+}
+.addButton{
+    padding: 25px;
+}
+.close{
+    color: white;
+}
+.customTable{
+    padding: 20px;
+}
+.customModalBody{
+    padding: 20px 25px 20px 25px;
+}
+.btn{
+    border-radius: 20px;
+}
+p{
+    color: red;
+}
