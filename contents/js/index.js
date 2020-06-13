@@ -12,6 +12,13 @@ function addnote() {
     }
 }
 
+function opennote(noteindex) {
+    temp = localStorage.getItem('QuickNotes');
+    quickNotes = JSON.parse(temp);
+    document.getElementById("open").value = quickNotes[noteindex][1];
+    $('#showModal').modal("show");
+}
+
 function editnote(noteindex) {
     temp = localStorage.getItem('QuickNotes');
     quickNotes = JSON.parse(temp);
@@ -62,9 +69,7 @@ function showNotes() {
                 `<tr>
                 <th scope="col">Sn No.</th>
                 <th scope="col">Title</th>
-                <th scope="col">Notes</th>
                 <th scope="col">Actions</th>
-                <th></th>
             </tr>`;
         }
         quickNotes = JSON.parse(temp);
@@ -76,9 +81,9 @@ function showNotes() {
       <tr>
         <td>${index + 1}</td>
         <td>${element[0]}</td>
-        <td>${element[1]}</td>
-        <td><button class="btn btn-info" onclick="editnote(${index})">Edit</button></td>
-        <td><button class="btn btn-danger" onclick="deletenote(${index})">Delete</button></td>
+        <td><div class="btn-group" role="group"><button class="btn btn-info" onclick="opennote(${index})">Open</button>
+        <button class="btn btn-warning" onclick="editnote(${index})">Edit</button>
+        <button class="btn btn-danger" onclick="deletenote(${index})">Delete</button></div></td>
       </tr>`;
     });
     tableContent.innerHTML = row;
