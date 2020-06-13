@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" , initial-scale=1.0">
-    <title>Document</title>
+    <title>SUV Quick Note</title>
+    <link rel="Quick Note icon" href="/contents/image/SUVQuickNote.ico">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -35,8 +36,8 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="text" id="myInput" onkeyup="searchnote()"
+                    placeholder="Search for title..">
             </form>
         </div>
     </nav>
@@ -103,18 +104,18 @@
                             <textarea class="form-control" id="updatenote" rows="5"></textarea>
                         </div>
                     </div>
-
+                    <input type="hidden" id="index">
                     <!-- Modal footer -->
                     <div class="modal-footer bg-light">
-                        <button class="btn btn-info" onclick="editnote()" data-dismiss="modal">Save</button>
-                        <button class="btn btn-danger" data-dismiss="modal">Dismiss</button>
+                        <a class="btn btn-info" onclick="update()" data-dismiss="modal">Save</a>
+                        <a class="btn btn-danger" data-dismiss="modal">Dismiss</a>
                     </div>
 
                 </div>
             </div>
         </div>
         <div class="customTable">
-            <table class="table table-responsive">
+            <table class="table table-responsive" id="myTable">
                 <thead id="thead"></thead>
                 <tbody id="tbody"></tbody>
             </table>

@@ -1,15 +1,36 @@
-
 function addnote() {
     title = document.getElementById("title").value;
     note = document.getElementById("note").value;
     if (title && note) {
-        console.log(title, note);
         temp = localStorage.getItem('QuickNotes');
         quickNotes = JSON.parse(temp);
         quickNotes.push([title, note]);
         localStorage.setItem('QuickNotes', JSON.stringify(quickNotes));
         document.getElementById("title").value = "";
         document.getElementById("note").value = "";
+        showNotes();
+    }
+}
+
+function editnote(noteindex) {
+    temp = localStorage.getItem('QuickNotes');
+    quickNotes = JSON.parse(temp);
+    document.getElementById("index").value = noteindex;
+    document.getElementById("updatetitle").value = quickNotes[noteindex][0];
+    document.getElementById("updatenote").value = quickNotes[noteindex][1];
+    $('#editModal').modal("show");
+}
+
+function update() {
+    noteindex = document.getElementById("index").value;
+    updatetitle = document.getElementById("updatetitle").value;
+    updatenote = document.getElementById("updatenote").value;
+    if (updatetitle && updatenote) {
+        temp = localStorage.getItem('QuickNotes');
+        quickNotes = JSON.parse(temp);
+        quickNotes[noteindex][0] = updatetitle;
+        quickNotes[noteindex][1] = updatenote;
+        localStorage.setItem('QuickNotes', JSON.stringify(quickNotes));
         showNotes();
     }
 }
@@ -41,7 +62,7 @@ function showNotes() {
                 `<tr>
                 <th scope="col">Sn No.</th>
                 <th scope="col">Title</th>
-                <th scope="col">Notess</th>
+                <th scope="col">Notes</th>
                 <th scope="col">Actions</th>
                 <th></th>
             </tr>`;
@@ -61,4 +82,26 @@ function showNotes() {
       </tr>`;
     });
     tableContent.innerHTML = row;
+}
+
+function searchnote() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
 }
