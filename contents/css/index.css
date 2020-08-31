@@ -11,6 +11,12 @@ body{
     font-family: Candara;
     padding: 10px 0px 20px 0px;
 }
+#time{
+    color: darkblue;
+}
+#date{
+    color: darkgreen;
+}
 .addButton{
     padding: 25px;
 }

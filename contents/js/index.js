@@ -54,6 +54,14 @@ function deletenote(noteindex) {
 }
 
 function showNotes() {
+    var myVar = setInterval(myTimer, 1000);
+
+    function myTimer() {
+        var d = new Date();
+        document.getElementById("time").innerHTML = d.toLocaleTimeString();
+        document.getElementById("date").innerHTML = d.toDateString();
+    }
+
     thead = document.getElementById("thead");
     if (localStorage.getItem('QuickNotes') == null) {
         quickNotes = [];
