@@ -4,3 +4,8 @@ By this project we can create a quick note like everyday-scedule, to-do list, sh
 We can modify and delete our existing quick-note as per our need.
 Date and time is also shown for easily create a quick note.
 Realtime search feature is also available for quickly find a note.
+
+
+##Link
+
+Live url : [Click here](https://suvankarpradhan.github.io/SUV-Quick-Note/)
